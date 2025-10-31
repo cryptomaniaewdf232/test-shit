@@ -480,7 +480,7 @@ function MacLib:Window(Settings)
 	headshot.BackgroundTransparency = 1
 	headshot.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	headshot.BorderSizePixel = 0
-	headshot.Size = UDim2.fromOffset(32, 32)
+	headshot.Size = UDim2.fromOffset(58, 58)
 	headshot.Image = (isReady and headshotImage) or "rbxassetid://0"
 
 	local uICorner3 = Instance.new("UICorner")
