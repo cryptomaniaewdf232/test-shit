@@ -3398,18 +3398,34 @@ function MacLib:Window(Settings)
 					wheel1.Size = UDim2.fromOffset(220, 220)
 					wheel1.SizeConstraint = Enum.SizeConstraint.RelativeYY
 
-					local target = Instance.new("ImageLabel")
+					local target = Instance.new("Frame")
 					target.Name = "Target"
-					target.Image = assets.colorTarget
-					target.ImageColor3 = Color3.fromRGB(0, 0, 0)
 					target.AnchorPoint = Vector2.new(0.5, 0.5)
 					target.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 					target.BackgroundTransparency = 1
-					target.BorderColor3 = Color3.fromRGB(27, 42, 53)
+					target.BorderColor3 = Color3.fromRGB(0, 0, 0)
 					target.Position = UDim2.fromScale(0.5, 0.5)
 					target.Size = UDim2.fromOffset(22, 22)
 					target.SizeConstraint = Enum.SizeConstraint.RelativeYY
 					target.Parent = wheel1
+
+					local horizontalLine = Instance.new("Frame")
+					horizontalLine.Name = "HorizontalLine"
+					horizontalLine.AnchorPoint = Vector2.new(0.5, 0.5)
+					horizontalLine.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+					horizontalLine.BorderSizePixel = 0
+					horizontalLine.Position = UDim2.fromScale(0.5, 0.5)
+					horizontalLine.Size = UDim2.fromOffset(16, 2)
+					horizontalLine.Parent = target
+
+					local verticalLine = Instance.new("Frame")
+					verticalLine.Name = "VerticalLine"
+					verticalLine.AnchorPoint = Vector2.new(0.5, 0.5)
+					verticalLine.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+					verticalLine.BorderSizePixel = 0
+					verticalLine.Position = UDim2.fromScale(0.5, 0.5)
+					verticalLine.Size = UDim2.fromOffset(2, 16)
+					verticalLine.Parent = target
 
 					wheel1.Parent = wheel
 
