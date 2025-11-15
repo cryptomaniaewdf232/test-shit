@@ -3403,7 +3403,7 @@ function MacLib:Window(Settings)
 					target.AnchorPoint = Vector2.new(0.5, 0.5)
 					target.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 					target.BackgroundTransparency = 1
-					target.BorderColor3 = Color3.fromRGB(0, 0, 0)
+					target.BorderSizePixel = 0
 					target.Position = UDim2.fromScale(0.5, 0.5)
 					target.Size = UDim2.fromOffset(22, 22)
 					target.SizeConstraint = Enum.SizeConstraint.RelativeYY
