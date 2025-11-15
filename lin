@@ -3412,19 +3412,19 @@ function MacLib:Window(Settings)
 					local horizontalLine = Instance.new("Frame")
 					horizontalLine.Name = "HorizontalLine"
 					horizontalLine.AnchorPoint = Vector2.new(0.5, 0.5)
-					horizontalLine.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+					horizontalLine.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 					horizontalLine.BorderSizePixel = 0
 					horizontalLine.Position = UDim2.fromScale(0.5, 0.5)
-					horizontalLine.Size = UDim2.fromOffset(16, 2)
+					horizontalLine.Size = UDim2.fromOffset(16, 1)
 					horizontalLine.Parent = target
 
 					local verticalLine = Instance.new("Frame")
 					verticalLine.Name = "VerticalLine"
 					verticalLine.AnchorPoint = Vector2.new(0.5, 0.5)
-					verticalLine.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+					verticalLine.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 					verticalLine.BorderSizePixel = 0
 					verticalLine.Position = UDim2.fromScale(0.5, 0.5)
-					verticalLine.Size = UDim2.fromOffset(2, 16)
+					verticalLine.Size = UDim2.fromOffset(1, 16)
 					verticalLine.Parent = target
 
 					wheel1.Parent = wheel
