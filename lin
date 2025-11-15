@@ -38,7 +38,7 @@ local assets = {
 	colorWheel = "rbxassetid://2849458409",
 	colorTarget = "rbxassetid://73265255323268",
 	grid = "rbxassetid://121484455191370",
-	globe = "rbxassetid://"125446513878016,
+	globe = "rbxassetid://108952102602834",
 	transform = "rbxassetid://90336395745819",
 	dropdown = "rbxassetid://18865373378",
 	sliderbar = "rbxassetid://18772615246",
@@ -1811,6 +1811,163 @@ function MacLib:Window(Settings)
 						MacLib.Options[Flag] = ToggleFunctions
 					end
 					return ToggleFunctions
+				end
+
+				function SectionFunctions:Checkbox(Settings, Flag)
+					local CheckboxFunctions = { Settings = Settings, IgnoreConfig = false, Class = "Checkbox" }
+					local checkbox = Instance.new("Frame")
+					checkbox.Name = "Checkbox"
+					checkbox.AutomaticSize = Enum.AutomaticSize.Y
+					checkbox.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+					checkbox.BackgroundTransparency = 1
+					checkbox.BorderColor3 = Color3.fromRGB(0, 0, 0)
+					checkbox.BorderSizePixel = 0
+					checkbox.Size = UDim2.new(1, 0, 0, 38)
+					checkbox.Parent = section
+
+					local checkboxName = Instance.new("TextLabel")
+					checkboxName.Name = "CheckboxName"
+					checkboxName.FontFace = Font.new(assets.interFont)
+					checkboxName.Text = CheckboxFunctions.Settings.Name
+					checkboxName.RichText = true
+					checkboxName.TextColor3 = Color3.fromRGB(255, 255, 255)
+					checkboxName.TextSize = 13
+					checkboxName.TextTransparency = 0.5
+					checkboxName.TextTruncate = Enum.TextTruncate.AtEnd
+					checkboxName.TextXAlignment = Enum.TextXAlignment.Left
+					checkboxName.TextYAlignment = Enum.TextYAlignment.Top
+					checkboxName.AnchorPoint = Vector2.new(0, 0.5)
+					checkboxName.AutomaticSize = Enum.AutomaticSize.Y
+					checkboxName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+					checkboxName.BackgroundTransparency = 1
+					checkboxName.BorderColor3 = Color3.fromRGB(0, 0, 0)
+					checkboxName.BorderSizePixel = 0
+					checkboxName.Position = UDim2.fromScale(0, 0.5)
+					checkboxName.Size = UDim2.new(1, -50, 0, 0)
+					checkboxName.Parent = checkbox
+
+					local checkboxBox = Instance.new("ImageLabel")
+					checkboxBox.Name = "CheckboxBox"
+					checkboxBox.Image = assets.grid
+					checkboxBox.ImageColor3 = Color3.fromRGB(87, 86, 86)
+					checkboxBox.AnchorPoint = Vector2.new(1, 0.5)
+					checkboxBox.BackgroundColor3 = Color3.fromRGB(87, 86, 86)
+					checkboxBox.BackgroundTransparency = 0
+					checkboxBox.BorderColor3 = Color3.fromRGB(255, 255, 255)
+					checkboxBox.BorderSizePixel = 0
+					checkboxBox.Position = UDim2.fromScale(1, 0.5)
+					checkboxBox.Size = UDim2.fromOffset(20, 20)
+
+					local checkboxUICorner = Instance.new("UICorner")
+					checkboxUICorner.Name = "CheckboxUICorner"
+					checkboxUICorner.CornerRadius = UDim.new(0, 4)
+					checkboxUICorner.Parent = checkboxBox
+
+					local checkboxUIStroke = Instance.new("UIStroke")
+					checkboxUIStroke.Name = "CheckboxUIStroke"
+					checkboxUIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+					checkboxUIStroke.Color = Color3.fromRGB(255, 255, 255)
+					checkboxUIStroke.Transparency = 0.9
+					checkboxUIStroke.Parent = checkboxBox
+
+					local checkmark = Instance.new("TextLabel")
+					checkmark.Name = "Checkmark"
+					checkmark.FontFace = Font.new(
+						assets.interFont,
+						Enum.FontWeight.SemiBold,
+						Enum.FontStyle.Normal
+					)
+					checkmark.Text = "✓"
+					checkmark.TextColor3 = Color3.fromRGB(255, 255, 255)
+					checkmark.TextSize = 16
+					checkmark.TextTransparency = 1
+					checkmark.TextXAlignment = Enum.TextXAlignment.Center
+					checkmark.TextYAlignment = Enum.TextYAlignment.Center
+					checkmark.AnchorPoint = Vector2.new(0.5, 0.5)
+					checkmark.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+					checkmark.BackgroundTransparency = 1
+					checkmark.BorderColor3 = Color3.fromRGB(0, 0, 0)
+					checkmark.BorderSizePixel = 0
+					checkmark.Position = UDim2.fromScale(0.5, 0.5)
+					checkmark.Size = UDim2.fromScale(1, 1)
+					checkmark.Parent = checkboxBox
+
+					checkboxBox.Parent = checkbox
+
+					local checkboxbool = CheckboxFunctions.Settings.Default
+
+					local TweenSettings = {
+						Info = TweenInfo.new(0.15, Enum.EasingStyle.Quad),
+					}
+
+					local function NewState(State, callback)
+						if State then
+							Tween(checkmark, TweenSettings.Info, {
+								TextTransparency = 0
+							}):Play()
+							Tween(checkboxBox, TweenSettings.Info, {
+								BackgroundColor3 = Color3.fromRGB(100, 150, 200)
+							}):Play()
+						else
+							Tween(checkmark, TweenSettings.Info, {
+								TextTransparency = 1
+							}):Play()
+							Tween(checkboxBox, TweenSettings.Info, {
+								BackgroundColor3 = Color3.fromRGB(87, 86, 86)
+							}):Play()
+						end
+
+						CheckboxFunctions.State = State
+						if callback then
+							callback(checkboxbool)
+						end
+					end
+
+					NewState(checkboxbool)
+
+					local function CheckboxClick()
+						checkboxbool = not checkboxbool
+						NewState(checkboxbool, CheckboxFunctions.Settings.Callback)
+					end
+
+					local checkboxButton = Instance.new("TextButton")
+					checkboxButton.Name = "CheckboxButton"
+					checkboxButton.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json")
+					checkboxButton.Text = ""
+					checkboxButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+					checkboxButton.TextSize = 14
+					checkboxButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+					checkboxButton.BackgroundTransparency = 1
+					checkboxButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+					checkboxButton.BorderSizePixel = 0
+					checkboxButton.AnchorPoint = Vector2.new(1, 0.5)
+					checkboxButton.Position = UDim2.fromScale(1, 0.5)
+					checkboxButton.Size = UDim2.fromOffset(35, 35)
+					checkboxButton.Parent = checkbox
+
+					checkboxButton.MouseButton1Click:Connect(CheckboxClick)
+
+					function CheckboxFunctions:Toggle()
+						CheckboxClick()
+					end
+					function CheckboxFunctions:UpdateState(State)
+						checkboxbool = State
+						NewState(checkboxbool, CheckboxFunctions.Settings.Callback)
+					end
+					function CheckboxFunctions:GetState()
+						return checkboxbool
+					end
+					function CheckboxFunctions:UpdateName(Name)
+						checkboxName.Text = Name
+					end
+					function CheckboxFunctions:SetVisibility(State)
+						checkbox.Visible = State
+					end
+
+					if Flag then
+						MacLib.Options[Flag] = CheckboxFunctions
+					end
+					return CheckboxFunctions
 				end
 
 				function SectionFunctions:Slider(Settings, Flag)
