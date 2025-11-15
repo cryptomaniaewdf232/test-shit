@@ -1879,7 +1879,7 @@ function MacLib:Window(Settings)
 					)
 					checkmark.Text = "✓"
 					checkmark.TextColor3 = Color3.fromRGB(255, 255, 255)
-					checkmark.TextSize = 16
+					checkmark.TextSize = 18
 					checkmark.TextTransparency = 1
 					checkmark.TextXAlignment = Enum.TextXAlignment.Center
 					checkmark.TextYAlignment = Enum.TextYAlignment.Center
