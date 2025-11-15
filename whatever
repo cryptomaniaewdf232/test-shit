@@ -3415,7 +3415,7 @@ function MacLib:Window(Settings)
 					horizontalLine.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 					horizontalLine.BorderSizePixel = 0
 					horizontalLine.Position = UDim2.fromScale(0.5, 0.5)
-					horizontalLine.Size = UDim2.fromOffset(16, 1)
+					horizontalLine.Size = UDim2.fromOffset(10, 1)
 					horizontalLine.Parent = target
 
 					local verticalLine = Instance.new("Frame")
@@ -3424,7 +3424,7 @@ function MacLib:Window(Settings)
 					verticalLine.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 					verticalLine.BorderSizePixel = 0
 					verticalLine.Position = UDim2.fromScale(0.5, 0.5)
-					verticalLine.Size = UDim2.fromOffset(1, 16)
+					verticalLine.Size = UDim2.fromOffset(1, 10)
 					verticalLine.Parent = target
 
 					wheel1.Parent = wheel
