@@ -5881,6 +5881,17 @@ function MacLib:Demo()
 		end,
 	}, "Toggle")
 
+	sections.MainSection1:Checkbox({
+		Name = "Checkbox",
+		Default = false,
+		Callback = function(value)
+			Window:Notify({
+				Title = Window.Settings.Title,
+				Description = (value and "Checked " or "Unchecked ") .. "Checkbox"
+			})
+		end,
+	}, "Checkbox")
+
 	sections.MainSection1:Keybind({
 		Name = "Keybind",
 		Blacklist = false,
